@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", function (event) {
 
     const ulHoldContacts = document.getElementById("addressbook");
+    const form = document.querySelector("FORM");
+    const nameOfPerson = document.getElementById("nameOfPerson");
+    const phoneNumber = document.querySelector("#phoneNumber");
 
     //const tData = JSON.parse("address_book.json");
 
@@ -48,4 +51,27 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
 
     iterateThroughContacts();
+
+    form.addEventListener('submit', (e) => {
+
+        e.preventDefault();
+        if (nameOfPerson.value === "" || phoneNumber.value === ""){
+            alert("name or phone number can't be empty!!")
+        }
+        else {
+
+            createLIToAppendUL(nameOfPerson, "alert alert-dark");
+            createLIToAppendUL(phoneNumber, "alert alert-success");
+        }
+    });
+
+    function createLIToAppendUL(inputField, className) {
+
+        const liElement = document.createElement("LI");
+        liElement.innerText = inputField.value;
+        liElement.className = className;
+        inputField.value = '';
+        ulHoldContacts.appendChild(liElement);
+
+    }
 });
