@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function (event) {
 
-    const divHoldContacts = document.getElementById("addressbook");
+    const ulHoldContacts = document.getElementById("addressbook");
 
     //const tData = JSON.parse("address_book.json");
 
@@ -32,8 +32,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
         const fragment = document.createDocumentFragment();
         for (let i = 0; i < contacts.length; i++) {
 
-            const name = document.createElement("P");
-            const number = document.createElement("P");
+            const name = document.createElement("LI");
+            const number = document.createElement("LI");
 
             name.innerText = contacts[i].name;
             name.className = "alert alert-dark";
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             fragment.appendChild(number);
         }
 
-        divHoldContacts.appendChild(fragment);
+        ulHoldContacts.appendChild(fragment);
     }
 
     iterateThroughContacts();
